@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.mydao.dao.ViolationMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.mydao.entity.Violation" >
+    <id column="rec_id" property="recId" jdbcType="BIGINT" />
+    <result column="violation_attribute" property="violationAttribute" jdbcType="INTEGER" />
+    <result column="pserson_name" property="psersonName" jdbcType="VARCHAR" />
+    <result column="person_phone" property="personPhone" jdbcType="VARCHAR" />
+    <result column="identy_code" property="identyCode" jdbcType="VARCHAR" />
+    <result column="facial_feature" property="facialFeature" jdbcType="VARCHAR" />
+    <result column="plate_no" property="plateNo" jdbcType="VARCHAR" />
+    <result column="violation_addr" property="violationAddr" jdbcType="VARCHAR" />
+    <result column="addr_lng" property="addrLng" jdbcType="VARCHAR" />
+    <result column="addr_lat" property="addrLat" jdbcType="VARCHAR" />
+    <result column="violation_time" property="violationTime" jdbcType="TIMESTAMP" />
+    <result column="terminal_no" property="terminalNo" jdbcType="VARCHAR" />
+    <result column="violationtype_code" property="violationtypeCode" jdbcType="VARCHAR" />
+    <result column="face_img" property="faceImg" jdbcType="VARCHAR" />
+    <result column="full_img" property="fullImg" jdbcType="VARCHAR" />
+    <result column="violation_detail" property="violationDetail" jdbcType="VARCHAR" />
+    <result column="proess_result" property="proessResult" jdbcType="VARCHAR" />
+    <result column="process_staff_id" property="processStaffId" jdbcType="VARCHAR" />
+    <result column="violationtype_name" property="violationtypeName" jdbcType="VARCHAR" />
+    <result column="idate" property="idate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rec_id, violation_attribute, pserson_name, person_phone, identy_code, facial_feature, 
+    plate_no, violation_addr, addr_lng, addr_lat, violation_time, terminal_no, violationtype_code, 
+    face_img, full_img, violation_detail, proess_result, process_staff_id, idate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    t1.*,t2.violationtype_name
+    from tbl_violation t1 left JOIN tbl_violationtype t2 on t1.violationtype_code = t2.violationtype_code
+    where t1.rec_id = #{recId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_violation
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="main.java.com.mydao.entity.Violation" >
+    insert into tbl_violation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        rec_id,
+      </if>
+      <if test="violationAttribute != null" >
+        violation_attribute,
+      </if>
+      <if test="psersonName != null" >
+        pserson_name,
+      </if>
+      <if test="personPhone != null" >
+        person_phone,
+      </if>
+      <if test="identyCode != null" >
+        identy_code,
+      </if>
+      <if test="facialFeature != null" >
+        facial_feature,
+      </if>
+      <if test="plateNo != null" >
+        plate_no,
+      </if>
+      <if test="violationAddr != null" >
+        violation_addr,
+      </if>
+      <if test="addrLng != null" >
+        addr_lng,
+      </if>
+      <if test="addrLat != null" >
+        addr_lat,
+      </if>
+      <if test="violationTime != null" >
+        violation_time,
+      </if>
+      <if test="terminalNo != null" >
+        terminal_no,
+      </if>
+      <if test="violationtypeCode != null" >
+        violationtype_code,
+      </if>
+      <if test="faceImg != null" >
+        face_img,
+      </if>
+      <if test="fullImg != null" >
+        full_img,
+      </if>
+      <if test="violationDetail != null" >
+        violation_detail,
+      </if>
+      <if test="proessResult != null" >
+        proess_result,
+      </if>
+      <if test="processStaffId != null" >
+        process_staff_id,
+      </if>
+      <if test="idate != null" >
+        idate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=BIGINT},
+      </if>
+      <if test="violationAttribute != null" >
+        #{violationAttribute,jdbcType=INTEGER},
+      </if>
+      <if test="psersonName != null" >
+        #{psersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="personPhone != null" >
+        #{personPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="identyCode != null" >
+        #{identyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facialFeature != null" >
+        #{facialFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNo != null" >
+        #{plateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="violationAddr != null" >
+        #{violationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="addrLng != null" >
+        #{addrLng,jdbcType=VARCHAR},
+      </if>
+      <if test="addrLat != null" >
+        #{addrLat,jdbcType=VARCHAR},
+      </if>
+      <if test="violationTime != null" >
+        #{violationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminalNo != null" >
+        #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="violationtypeCode != null" >
+        #{violationtypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faceImg != null" >
+        #{faceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fullImg != null" >
+        #{fullImg,jdbcType=VARCHAR},
+      </if>
+      <if test="violationDetail != null" >
+        #{violationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="proessResult != null" >
+        #{proessResult,jdbcType=VARCHAR},
+      </if>
+      <if test="processStaffId != null" >
+        #{processStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null" >
+        #{idate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.mydao.entity.Violation" >
+    update tbl_violation
+    <set >
+      <if test="violationAttribute != null" >
+        violation_attribute = #{violationAttribute,jdbcType=INTEGER},
+      </if>
+      <if test="psersonName != null" >
+        pserson_name = #{psersonName,jdbcType=VARCHAR},
+      </if>
+      <if test="personPhone != null" >
+        person_phone = #{personPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="identyCode != null" >
+        identy_code = #{identyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="facialFeature != null" >
+        facial_feature = #{facialFeature,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNo != null" >
+        plate_no = #{plateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="violationAddr != null" >
+        violation_addr = #{violationAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="addrLng != null" >
+        addr_lng = #{addrLng,jdbcType=VARCHAR},
+      </if>
+      <if test="addrLat != null" >
+        addr_lat = #{addrLat,jdbcType=VARCHAR},
+      </if>
+      <if test="violationTime != null" >
+        violation_time = #{violationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminalNo != null" >
+        terminal_no = #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="violationtypeCode != null" >
+        violationtype_code = #{violationtypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="faceImg != null" >
+        face_img = #{faceImg,jdbcType=VARCHAR},
+      </if>
+      <if test="fullImg != null" >
+        full_img = #{fullImg,jdbcType=VARCHAR},
+      </if>
+      <if test="violationDetail != null" >
+        violation_detail = #{violationDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="proessResult != null" >
+        proess_result = #{proessResult,jdbcType=VARCHAR},
+      </if>
+      <if test="processStaffId != null" >
+        process_staff_id = #{processStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null" >
+        idate = #{idate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectHisRecords" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select t1.rec_id,t1.violation_time,t1.violation_addr,t2.violationtype_name from tbl_violation t1 left JOIN tbl_violationtype t2 on t1.violationtype_code = t2.violationtype_code where 1 = 1
+     <if test="violationAttribute eq '1001'">
+       and t1.facial_feature = #{facialFeature}
+     </if>
+     <if test="violationAttribute eq '1002'">
+       and t1.plate_no = #{plateNo}
+     </if>
+      order by t1.idate limit #{pageIndex},#{pageSize};
+  </select>
+
+  <select id="selectHisRecordsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from tbl_violation where 1 = 1
+    <if test="violationAttribute eq '1001'">
+      and facial_feature = #{facialFeature}
+    </if>
+    <if test="violationAttribute eq '1002'">
+      and plate_no = #{plateNo}
+    </if>
+  </select>
+
+  <select id="selectHisRecordsByUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select t1.rec_id,t1.violation_time,t1.violation_addr,t2.violationtype_name from tbl_violation t1 left JOIN tbl_violationtype t2 on t1.violationtype_code = t2.violationtype_code where t1.process_staff_id = #{processStaffId} and <![CDATA[DATE_FORMAT(t1.idate ,'%Y-%m-%d') >=  DATE_FORMAT(#{idate},'%Y-%m-%d')]]>
+    order by t1.idate limit #{pageIndex},#{pageSize};
+  </select>
+
+  <select id="selectHisRecordsCountByUser" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(*) from tbl_violation where process_staff_id = #{processStaffId} and <![CDATA[DATE_FORMAT(idate ,'%Y-%m-%d') >=  DATE_FORMAT(#{idate},'%Y-%m-%d')]]>
+  </select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.mydao.dao.ViolationTypeMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.mydao.entity.ViolationType" >
+    <result column="rec_id" property="recId" jdbcType="BIGINT" />
+    <result column="violationtype_code" property="violationtypeCode" jdbcType="VARCHAR" />
+    <result column="violationtype_name" property="violationtypeName" jdbcType="VARCHAR" />
+    <result column="idate" property="idate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insertSelective" parameterType="main.java.com.mydao.entity.ViolationType" >
+    insert into tbl_violationtype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        rec_id,
+      </if>
+      <if test="violationtypeCode != null" >
+        violationtype_code,
+      </if>
+      <if test="violationtypeName != null" >
+        violationtype_name,
+      </if>
+      <if test="idate != null" >
+        idate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=BIGINT},
+      </if>
+      <if test="violationtypeCode != null" >
+        #{violationtypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="violationtypeName != null" >
+        #{violationtypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null" >
+        #{idate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="findList" resultMap="BaseResultMap">
+    select * from tbl_violationtype
+  </select>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.mydao.dao.LoginLogMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.mydao.entity.LoginLog" >
+    <id column="rec_id" property="recId" jdbcType="BIGINT" />
+    <result column="staff_id" property="staffId" jdbcType="VARCHAR" />
+    <result column="login_time" property="loginTime" jdbcType="DATE" />
+    <result column="terminal_no" property="terminalNo" jdbcType="VARCHAR" />
+    <result column="idate" property="idate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rec_id, staff_id, login_time, terminal_no, idate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_loginlog
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_loginlog
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="main.java.com.mydao.entity.LoginLog" >
+    insert into tbl_loginlog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        rec_id,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="terminalNo != null" >
+        terminal_no,
+      </if>
+      <if test="idate != null" >
+        idate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=BIGINT},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminalNo != null" >
+        #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null" >
+        #{idate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.mydao.entity.LoginLog" >
+    update tbl_loginlog
+    <set >
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminalNo != null" >
+        terminal_no = #{terminalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idate != null" >
+        idate = #{idate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rec_id = #{recId,jdbcType=BIGINT}
+  </update>
+</mapper>

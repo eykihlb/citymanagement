@@ -1,0 +1,72 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer",
+      "type": "main.java.com.mydao.model.FTPConfig"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.AccessConfig",
+      "name": "token",
+      "type": "main.java.com.mydao.model.AccessConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.ftp-host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.ftp-password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.ftp-path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.ftp-port",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.ftp-user-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.http-host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.http-path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.http-port",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.FTPConfig",
+      "name": "ftpServer.local-path",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.AccessConfig",
+      "name": "token.a-k",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "main.java.com.mydao.model.AccessConfig",
+      "name": "token.s-k",
+      "type": "java.lang.String"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="main.java.com.mydao.dao.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="main.java.com.mydao.entity.SysUser" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="LOGIN_PASS" property="loginPass" jdbcType="VARCHAR" />
+    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+    <result column="staff_id" property="staffId" jdbcType="VARCHAR" />
+    <result column="staff_name" property="staffName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="identitycard_type_id" property="identitycardTypeId" jdbcType="TINYINT" />
+    <result column="identitycard_no" property="identitycardNo" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="edu_level" property="eduLevel" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="cell_phone" property="cellPhone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="is_onjob" property="isOnjob" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="update_staffid" property="updateStaffid" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LOGIN_NAME, LOGIN_PASS, REAL_NAME, staff_id, staff_name, sex, identitycard_type_id, 
+    identitycard_no, birthday, edu_level, mobile, cell_phone, email, is_onjob, status, 
+    update_staffid, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_sysuser
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tbl_sysuser
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="main.java.com.mydao.entity.SysUser" >
+    insert into tbl_sysuser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME,
+      </if>
+      <if test="loginPass != null" >
+        LOGIN_PASS,
+      </if>
+      <if test="realName != null" >
+        REAL_NAME,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="staffName != null" >
+        staff_name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="identitycardTypeId != null" >
+        identitycard_type_id,
+      </if>
+      <if test="identitycardNo != null" >
+        identitycard_no,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="eduLevel != null" >
+        edu_level,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="cellPhone != null" >
+        cell_phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="isOnjob != null" >
+        is_onjob,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="updateStaffid != null" >
+        update_staffid,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPass != null" >
+        #{loginPass,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="identitycardTypeId != null" >
+        #{identitycardTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="identitycardNo != null" >
+        #{identitycardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="eduLevel != null" >
+        #{eduLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhone != null" >
+        #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnjob != null" >
+        #{isOnjob,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="updateStaffid != null" >
+        #{updateStaffid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.mydao.entity.SysUser" >
+    update tbl_sysuser
+    <set >
+      <if test="loginName != null" >
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPass != null" >
+        LOGIN_PASS = #{loginPass,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null" >
+        staff_name = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="identitycardTypeId != null" >
+        identitycard_type_id = #{identitycardTypeId,jdbcType=TINYINT},
+      </if>
+      <if test="identitycardNo != null" >
+        identitycard_no = #{identitycardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="eduLevel != null" >
+        edu_level = #{eduLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhone != null" >
+        cell_phone = #{cellPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isOnjob != null" >
+        is_onjob = #{isOnjob,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="updateStaffid != null" >
+        update_staffid = #{updateStaffid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="userLogin" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from tbl_sysuser where LOGIN_NAME = #{userName} and LOGIN_PASS = #{passWord}
+  </select>
+</mapper>
